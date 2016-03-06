@@ -1,6 +1,10 @@
+os:
+  - linux
+  - osx
 language: java
 jdk:
   - oraclejdk8
 script:
-  - sudo apt-get install -y nailgun
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install nailgun;
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install -y nailgun;
   - ./cbt
